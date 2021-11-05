@@ -1,0 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
+.canvas {
+    border: indianred solid 3px;
+}

@@ -11,7 +11,8 @@ console.log("[db] connecting to:", database);
 
 module.exports.addUser = (userFirst, userLast, userSign) => {
     const q = `INSERT INTO signatures (first, last, signature)
-               VALUES($1, $2, $3);`;
+               VALUES($1, $2, $3)
+               RETURNING id;`;
     const params = [userFirst, userLast, userSign];
     return db.query(q, params);
 };
@@ -24,4 +25,10 @@ module.exports.getUser = () => {
 module.exports.getNumberOfSign = () => {
     const q = `SELECT COUNT(*) FROM signatures;`;
     return db.query(q);
+};
+
+module.exports.getSignature = (sigID) => {
+    const q = `SELECT signature FROM signatures WHERE id = $1`;
+    const params = [sigID];
+    return db.query(q, params);
 };

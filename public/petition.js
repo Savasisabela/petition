@@ -1,8 +1,51 @@
-// write client-side JS logic, that allows users to draw their signature on the canvas:
+console.log("a mae ta on 💁‍♀️", $);
 
-// - you can use vanilla JS or jQuery, this is your decision
+const canvas = $(".canvas");
+const signature = $("#signature");
+const ctx = canvas[0].getContext("2d");
 
-// - You will need 3 events for the logic to work out:
-// 1. mousedown: → start drawing
-// 2. mousemove: → if the mouseis down draw the line based on the position of the user's cursor. You will need to figure out where the user's cursor is within the canvas element. This will require some calculation, you will need to look at some property on the canvas and some property on the event object.
-// 3. mouseup: → finish drawing This will involve converting your canvas content into a DataURL - to get the image you have drawn on your canvas utilise canvas' toDataURL method - and set the value of your hidden input field to be equal to the DataURL you retrieved from your canvas.
+ctx.fillStyle = "rgba(0, 0, 0, 255)";
+
+let coord = { x: 0, y: 0 };
+let drawing = false;
+
+const getPosition = (e) => {
+    const rect = e.target.getBoundingClientRect();
+    coord.x = e.clientX - rect.left;
+    coord.y = e.clientY - rect.top;
+};
+
+const startDrawing = (e) => {
+    drawing = true;
+    getPosition(e);
+};
+
+const stopDrawing = () => {
+    drawing = false;
+};
+
+function draw(e) {
+    if (drawing) {
+        ctx.beginPath();
+        ctx.lineWidth = 4;
+        ctx.lineCap = "round";
+        ctx.moveTo(coord.x, coord.y);
+        getPosition(e);
+        ctx.lineTo(coord.x, coord.y);
+        ctx.stroke();
+    }
+}
+
+canvas.on("mousedown", (e) => {
+    startDrawing(e);
+
+    canvas.on("mousemove", (e) => {
+        draw(e);
+    });
+});
+
+canvas.on("mouseup", () => {
+    stopDrawing();
+    const dataURL = canvas[0].toDataURL();
+    signature.val(dataURL);
+});

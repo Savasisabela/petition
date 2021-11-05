@@ -9,12 +9,17 @@
         <label for="last">Enter your last name</label>
         <input type="text" name="last" id="lastname" required />
     </div>
-    {{! <div>
-        <label for="signature">Signature</label>
-        <input type="hidden" name="signature" id="signature" required />
-    </div> }}
+
+    <div>
+        <label for="signature">Sign here</label>
+        <canvas class="canvas" width="1000" height="300">
+            <input type="hidden" name="signature" id="signature" required />
+        </canvas>
+    </div>
     <div>
         <button>Submit</button>
     </div>
 
 </form>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="petition.js"></script>
