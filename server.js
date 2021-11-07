@@ -10,10 +10,10 @@ app.use((req, res, next) => {
     next();
 });
 
-// app.use((req, res, next) => {
-//     console.log(`${req.method} / ${req.url}`);
-//     next();
-// });
+app.use((req, res, next) => {
+    console.log(`${req.method} / ${req.url}`);
+    next();
+});
 
 app.engine("handlebars", hb());
 app.set("view engine", "handlebars");
@@ -60,8 +60,8 @@ app.get("/thanks", (req, res) => {
     const sigID = req.session.signatureId;
 
     if (sigID) {
-        Promise.all([db.getNumberOfSign(), db.getSignature(sigID)]).then(
-            (data) => {
+        Promise.all([db.getNumberOfSign(), db.getSignature(sigID)])
+            .then((data) => {
                 const count = data[0].rows[0].count;
                 const signature = data[1].rows[0].signature;
 
@@ -69,8 +69,11 @@ app.get("/thanks", (req, res) => {
                     count,
                     signature,
                 });
-            }
-        );
+            })
+            .catch((err) => {
+                console.log("ERROR ON sigID in THANKS:", err);
+                res.sendStatus(500);
+            });
     } else {
         res.redirect("/petition");
     }
@@ -80,12 +83,17 @@ app.get("/signers", (req, res) => {
     const sigID = req.session.signatureId;
 
     if (sigID) {
-        db.getUser().then((data) => {
-            const { rows } = data;
-            res.render("signers", {
-                rows,
+        db.getUser()
+            .then((data) => {
+                const { rows } = data;
+                res.render("signers", {
+                    rows,
+                });
+            })
+            .catch((err) => {
+                console.log("ERROR ON sigID in SIGNERS:", err);
+                res.sendStatus(500);
             });
-        });
     } else {
         res.redirect("/petition");
     }
