@@ -1,4 +1,4 @@
-<h1>Here's a list of everyone who signed this already:</h1>
+<h1>Here's a list of everyone who signed this already in the city {{cityLower}}:</h1>
 <ul>
     {{#each rows}}
         <li> {{#if website}} <a href="{{website}}"> {{/if}} 
@@ -6,7 +6,7 @@
             {{last}}
             {{#if website}} </a> {{/if}}
             {{#if age}}, {{age}} {{/if}}
-            {{#if city}} - <a href="/signers/{{city}}">{{city}}</a> {{/if}}
+            {{#if city}} - {{city}} {{/if}}
         </li>
     {{/each}}
 </ul>
