@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const hb = require("express-handlebars");
 const db = require("./db.js");
-const { secret } = require("./secrets.json");
+const { secret } = process.env || require("./secrets.json");
 const { hash, compare } = require("./bc.js");
 
 // ************************** MIDDLEWARE *************************************
