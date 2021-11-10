@@ -50,9 +50,10 @@ app.get("/register", (req, res) => {
 });
 
 app.post("/register", (req, res) => {
-    hash(req.body.password)
+    const { password, first, last, email } = req.body;
+    hash(password)
         .then((hashedPw) => {
-            db.addUser(req.body.first, req.body.last, req.body.email, hashedPw)
+            db.addUser(first, last, email, hashedPw)
                 .then((data) => {
                     req.session.userId = data.rows[0].id; // creating cookie from users table id row
                     res.redirect("/profile");
@@ -79,10 +80,11 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-    db.getUser(req.body.email)
+    const { email, password } = req.body;
+    db.getUser(email)
         .then((data) => {
             const dataPw = data.rows[0].password;
-            const inputPw = req.body.password;
+            const inputPw = password;
 
             compare(inputPw, dataPw).then((match) => {
                 if (match) {
@@ -116,8 +118,19 @@ app.get("/profile", (req, res) => {
 });
 
 app.post("/profile", (req, res) => {
-    const { age, city, website } = req.body;
+    let { age, city, website } = req.body;
     const userID = req.session.userId;
+
+    if (website && !website.startsWith("http://")) {
+        website = "http://" + website;
+    }
+
+    age = age || null;
+
+    if (city) {
+        city = city.toLowerCase();
+    }
+    console.log("website", website);
     db.addProfile(age, city, website, userID)
         .then(() => {
             res.redirect("/petition");
@@ -128,6 +141,43 @@ app.post("/profile", (req, res) => {
                 error: `Something went wrong, please try again.`,
             });
         });
+});
+
+// ********************************* EDIT PROFILE ******************************
+
+app.get("/profile/edit", (req, res) => {
+    // insert logic here
+});
+
+app.post("/profile/edit", (req, res) => {
+    const { password } = req.body;
+
+    if (password) {
+        hash(password)
+            .then((hashedPw) => {
+                return db.updateUserWithPassword(hashedPw);
+            })
+            .then(() => {
+                db.upsertProfile();
+            })
+            .then(() => {
+                res.redirect("/thanks");
+            })
+            .catch((err) => {
+                console.log("error in password update:", err);
+                res.render("edit", {
+                    error: "try again",
+                });
+            });
+    } else {
+        db.updateUser()
+            .then(() => {
+                return db.upsertProfile();
+            })
+            .then(() => {
+                res.redirect("/thanks");
+            });
+    }
 });
 
 // ********************************** PETITION (sign) ***********************************
@@ -240,4 +290,6 @@ app.get("/logout", (req, res) => {
     res.redirect("/login");
 });
 
-app.listen(8080, () => console.log("petition server listening 😗✌"));
+app.listen(process.env.PORT || 8080, () =>
+    console.log("petition server listening 😗✌")
+);

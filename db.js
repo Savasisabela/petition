@@ -4,10 +4,13 @@ const dbUserPassword = "postgres";
 const database = "petition";
 
 const db = spicedPg(
-    `postgres:${dbUsername}:${dbUserPassword}@localhost:5432/${database}`
+    process.env.DATABASE_URL ||
+        `postgres:${dbUsername}:${dbUserPassword}@localhost:5432/${database}`
 );
 
 console.log("[db] connecting to:", database);
+
+// *********************** ADD to tables *******************************
 
 module.exports.addUser = (userFirst, userLast, userEmail, userPassword) => {
     const q = `INSERT INTO users (first, last, email, password)
@@ -31,6 +34,8 @@ module.exports.addProfile = (userAge, userCity, userWebsite, userID) => {
     const params = [userAge, userCity, userWebsite, userID];
     return db.query(q, params);
 };
+
+// ********************* GET information from table **********************
 
 module.exports.getSigners = () => {
     const q = `SELECT * FROM signatures
@@ -71,3 +76,22 @@ module.exports.getUser = (userEmail) => {
     const params = [userEmail];
     return db.query(q, params);
 };
+
+// ************************ UPDATE information from table ******************************
+
+module.exports.updateUser = () => {};
+module.exports.updateUserWithPassword = () => {};
+module.exports.upsertProfile = () => {};
+
+// ================================ queriy syntax ====================================
+
+// ********* updating values **************
+// UPDATE nameOfTable SET clmnName=value, clmnName=value
+// WHERE clmnName=value;
+
+// ************ UPSERT (insert value if unexistent, updating if exists) ******************
+// INSERT INTO nameOfTable (clm, clmn, clmn) VALUES (value, value,value)
+// ON CONFLICT (conflictcolumn) DO UPDATE SET clmn=value, clmnName=value,clmnName=value;
+
+// ************ deleting from table DONT FORGET CONDITION ************************
+// DELETE FROM nameOfTable WHERE clmnName=value;
