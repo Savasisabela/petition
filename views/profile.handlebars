@@ -1,20 +1,32 @@
-<h1>THIS IS THE PROFILE PAGE</h1>
+<h1>I'd love to know a bit more about you!</h1>
 
 <h3 class="error-msg">{{error}}</h3>
 <form action="" method="post">
     <div>
-        <label for="age">Tell us your age</label>
-        <input type="number" name="age" class="age"/>
+        <div class="label">
+
+            <label for="age">How old are you?</label>
+        </div>
+        <input type="number" name="age" class="age" />
     </div>
     <div>
-        <label for="city">Tell us your city</label>
-        <input type="text" name="city" class="city"/>
+        <div class="label">
+
+            <label for="city">Which city do you live in?</label>
+        </div>
+        <input type="text" name="city" class="city" />
     </div>
 
     <div>
-        <label for="website">Tell us your website</label>
-        <input type="text" name="website" class="website"/>
+        <div class="label">
+
+            <label for="website">Share your awesome website or a cool link!</label>
+        </div>
+        <input type="text" name="website" class="website" />
     </div>
     <div>
         <button>Continue</button>
     </div>
+</form>
+
+<a href="/logout">Logout</a>

@@ -1,29 +1,49 @@
-<h1>THIS IS THE REGISTRATION PAGE</h1>
+<header>
 
-<h3 class="error-msg">{{error}}</h3>
-<form action="" method="post">
-    <div>
-        <label for="first">First name</label>
-        <input type="text" name="first" id="firstname" required />
-    </div>
-    <div>
-        <label for="last">Last name</label>
-        <input type="text" name="last" id="lastname" required />
+</header>
+
+<div id="register-container">
+    <div id="hire-me-img">
+        <img href="./public/hireme.jpg" />
     </div>
 
-    <div>
-        <label for="email">email</label>
-        <input type="email" name="email" id="email" required />
+    <h1>SUPPORT <s>MY</s> OUR CAUSE</h1>
 
-    </div>
-    <div>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" required />
-    </div>
-    <div>
-        <button>Sign up</button>
-    </div>
+    <h3 class="error-msg">{{error}}</h3>
+    <form id="register-form" action="" method="post">
+        <div>
+            <div class="label">
+                <label for="first">First name</label>
+            </div>
+            <input type="text" name="first" class="firstname" required />
+        </div>
+        <div>
+            <div class="label">
+                <label for="last">Last name</label>
+            </div>
+            <input type="text" name="last" class="lastname" required />
+        </div>
 
-    <h3>Already registered? <a href="/login">Log in here</a> </h3>
+        <div>
+            <div class="label">
 
-</form>
+                <label for="email">Email</label>
+            </div>
+            <input type="email" name="email" class="email" required />
+
+        </div>
+        <div>
+            <div class="label">
+
+                <label for="password">Password</label>
+            </div>
+            <input type="password" name="password" class="password" required />
+        </div>
+        <div>
+            <button>Sign up</button>
+        </div>
+
+        <h4>Already registered? <br /><a href="/login">Log in here</a> </h4>
+
+    </form>
+</div>

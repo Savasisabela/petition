@@ -1,4 +1,5 @@
-<h1>Here's a list of everyone who signed this already in the city {{cityLower}}:</h1>
+{{#if rows}}
+<h1>Here's a list of everyone who signed this already in {{city}}:</h1>
 <ul>
     {{#each rows}}
         <li> {{#if website}} <a href="{{website}}"> {{/if}} 
@@ -10,3 +11,8 @@
         </li>
     {{/each}}
 </ul>
+{{else}} 
+<h1>There are no signatures from {{city}} yet 😞</h1>
+{{/if}}
+
+<a href="/logout">Logout</a>

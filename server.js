@@ -286,12 +286,27 @@ app.get("/thanks", (req, res) => {
                 });
             })
             .catch((err) => {
-                console.log("ERROR ON sigId in THANKS:", err);
+                console.log("error on thanks:", err);
                 res.sendStatus(500);
             });
     } else {
         res.redirect("/register");
     }
+});
+
+app.post("/signature/delete", (req, res) => {
+    let { userId } = req.session;
+    db.deleteSignature(userId)
+        .then(() => {
+            req.session.sigId = null;
+            return res.redirect("/petition");
+        })
+        .catch((err) => {
+            console.log("error on deleteSignature:", err);
+            res.render("thanks", {
+                error: "Something went wrong, please try again",
+            });
+        });
 });
 
 // ******************************* SIGNERS *************************************
@@ -323,10 +338,9 @@ app.get("/signers", (req, res) => {
 app.get("/signers/:city", (req, res) => {
     const { sigId, userId } = req.session;
     let { city } = req.params;
-    if (city) {
-        city = city.toLowerCase();
-    }
-
+    city = city.toUpperCase();
+    city.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    console.log(city);
     if (userId) {
         if (sigId) {
             db.getSignersCity(city)

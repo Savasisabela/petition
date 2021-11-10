@@ -1,14 +1,14 @@
-<h1>THIS IS THE LOGIN PAGE</h1>
+<h1>LOGIN</h1>
 <h3 class="error-msg">{{error}}</h3>
 <form action="" method="post">
     <div>
-        <label for="email">email</label>
-        <input type="email" name="email" id="email" required />
+        <label for="email">Email</label>
+        <input type="email" name="email" class="email" required />
 
     </div>
     <div>
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" required />
+        <input type="password" name="password" class="password" required />
     </div>
     <div>
         <button>Log in</button>
@@ -17,3 +17,5 @@
     <h3>Not registered? <a href="/register">Sign up here</a> </h3>
 
 </form>
+
+<a href="/logout">Logout</a>
