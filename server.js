@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const hb = require("express-handlebars");
 const db = require("./db.js");
-const { secret } = process.env || require("./secrets.json");
+const secret = process.env.secret || require("./secrets.json").secret;
 const { hash, compare } = require("./bc.js");
 
 if (process.env.NODE_ENV == "production") {
