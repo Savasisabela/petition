@@ -6,6 +6,15 @@ const db = require("./db.js");
 const { secret } = process.env || require("./secrets.json");
 const { hash, compare } = require("./bc.js");
 
+if (process.env.NODE_ENV == "production") {
+    app.use((req, res, next) => {
+        if (req.headers["x-forwarded-proto"].startsWith("https")) {
+            return next();
+        }
+        res.redirect(`https://${req.hostname}${req.url}`);
+    });
+}
+
 // ************************** MIDDLEWARE *************************************
 
 app.use((req, res, next) => {
