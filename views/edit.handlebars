@@ -1,0 +1,63 @@
+<h1>EDIT YOUR PROFILE HERE</h1>
+
+<h3 class="error-msg">{{error}}</h3>
+
+<form action="" method="post">
+    {{#rows}}
+        <div>
+            <label for="first">First name</label>
+            <input
+                type="text"
+                name="first"
+                class="first"
+                value="{{first}}"
+                required
+            />
+        </div>
+        <div>
+            <label for="last">Last name</label>
+            <input
+                type="text"
+                name="last"
+                class="last"
+                value="{{last}}"
+                required
+            />
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input
+                type="email"
+                name="email"
+                class="email"
+                value="{{email}}"
+                required
+            />
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" name="password" class="password" />
+        </div>
+        <div>
+            <label for="age">Age</label>
+            <input type="number" name="age" class="age" value="{{age}}" />
+        </div>
+        <div>
+            <label for="city">City</label>
+            <input type="text" name="city" class="city" value="{{city}}" />
+        </div>
+
+        <div>
+            <label for="website">Website</label>
+            <input
+                type="text"
+                name="website"
+                class="website"
+                value="{{website}}"
+            />
+        </div>
+        <div>
+            <button>Update</button>
+        </div>
+    {{/rows}}
+</form>

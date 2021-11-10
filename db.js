@@ -46,6 +46,15 @@ module.exports.getSigners = () => {
     return db.query(q);
 };
 
+module.exports.getUserById = (userId) => {
+    const q = `SELECT * FROM users
+                LEFT JOIN profiles
+                ON users.id = profiles.user_id
+                WHERE users.id = $1;`;
+    const params = [userId];
+    return db.query(q, params);
+};
+
 module.exports.getSignersCity = (city) => {
     const q = `SELECT * FROM signatures
                 LEFT JOIN users
@@ -68,7 +77,7 @@ module.exports.getSignature = (sigID) => {
     return db.query(q, params);
 };
 
-module.exports.getUser = (userEmail) => {
+module.exports.getUserByEmail = (userEmail) => {
     const q = `SELECT users.password, users.id, signatures.id AS sig_id FROM users 
                 LEFT JOIN signatures 
                 ON users.id = signatures.user_id
@@ -79,11 +88,43 @@ module.exports.getUser = (userEmail) => {
 
 // ************************ UPDATE information from table ******************************
 
-module.exports.updateUser = () => {};
-module.exports.updateUserWithPassword = () => {};
-module.exports.upsertProfile = () => {};
+module.exports.updateUser = ({ first, last, email, userId }) => {
+    const q = `UPDATE users
+                SET first =$1,
+                last = $2,
+                email = $3
+                WHERE id = $4;`;
+    const params = [first, last, email, userId];
+    return db.query(q, params);
+};
 
-// ================================ queriy syntax ====================================
+module.exports.updateUserWithPassword = ({
+    userId,
+    first,
+    last,
+    email,
+    hashedPw,
+}) => {
+    const q = `UPDATE users 
+                SET first = $1, 
+                last = $2, 
+                email = $3, 
+                password = $4
+                WHERE id = $5;`;
+    const params = [first, last, email, hashedPw, userId];
+    return db.query(q, params);
+};
+
+module.exports.upsertProfile = ({ userId, age, city, website }) => {
+    const q = `INSERT INTO profiles (age, city, website, user_id)
+                VALUES ($1, $2, $3, $4) 
+                ON CONFLICT (user_id) DO UPDATE 
+                SET age = $1, city = $2, website = $3;`;
+    const params = [age, city, website, userId];
+    return db.query(q, params);
+};
+
+// ================================ query syntax ====================================
 
 // ********* updating values **************
 // UPDATE nameOfTable SET clmnName=value, clmnName=value
