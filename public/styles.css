@@ -18,12 +18,40 @@ footer {
     padding: 6px;
 }
 
-#register-container {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
+input {
+    width: 250px;
+    height: 2rem;
 }
 
-.label {
+#register-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#register-header {
+    text-align: center;
+    height: 20%;
+    text-transform: uppercase;
+}
+
+#register-form {
+    grid-column: 3;
+}
+
+#hire-me-img {
+    grid-row: 1 / span 3;
+}
+
+#testimonials {
+    grid-column: 2;
+}
+
+.support {
+    grid-column: 3;
+}
+
+.error-msg {
+    color: red;
 }
 
 .canvas {

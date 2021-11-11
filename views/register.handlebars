@@ -1,27 +1,59 @@
 <header>
+    <div id="register-header">
+        <h1>Do you believe a super cool tech company should give Isabela a job?</h1>
+        <h3>(of course you do)</h3>
+    </div>
 
 </header>
 
 <div id="register-container">
     <div id="hire-me-img">
-        <img href="./public/hireme.jpg" />
+        <img src="/hireme.jpg" />
     </div>
 
-    <h1>SUPPORT <s>MY</s> OUR CAUSE</h1>
+    <div id="testimonials">
+        <q>Impressive skills</q>
+        <span>- Steve Jobs</span>
+        <br />
+        <q>Incredible potential</q>
+        <span>- Barbara Liskov</span>
+        <br />
+        <q>I wish <strong>I</strong> could work with her!</q>
+        <span>- Augusta Ada King, Countess of Lovelace</span>
+        <br />
+        <q>The best student we have <i>ever</i> had</q>
+        <span>- David Friedman</span>
+    </div>
 
-    <h3 class="error-msg">{{error}}</h3>
+    <div class="support">
+        <h2>THEN SUPPORT <s>MY</s> OUR CAUSE</h2>
+
+    </div>
+
     <form id="register-form" action="" method="post">
         <div>
             <div class="label">
                 <label for="first">First name</label>
             </div>
-            <input type="text" name="first" class="firstname" required />
+            <input
+                type="text"
+                name="first"
+                class="firstname"
+                placeholder="Gorgeous"
+                required
+            />
         </div>
         <div>
             <div class="label">
                 <label for="last">Last name</label>
             </div>
-            <input type="text" name="last" class="lastname" required />
+            <input
+                type="text"
+                name="last"
+                class="lastname"
+                placeholder="Amazing"
+                required
+            />
         </div>
 
         <div>
@@ -29,7 +61,13 @@
 
                 <label for="email">Email</label>
             </div>
-            <input type="email" name="email" class="email" required />
+            <input
+                type="email"
+                name="email"
+                class="email"
+                placeholder="gorgeous@amazing.me"
+                required
+            />
 
         </div>
         <div>
@@ -43,7 +81,9 @@
             <button>Sign up</button>
         </div>
 
+        <h4 class="error-msg">{{error}}</h4>
         <h4>Already registered? <br /><a href="/login">Log in here</a> </h4>
 
     </form>
+
 </div>
