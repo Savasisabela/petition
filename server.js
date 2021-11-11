@@ -67,6 +67,8 @@ app.use("/profile", profileRouter);
 app.use(thanksRouter);
 app.use("/signers", signersRouter);
 
+// *****************************************************************
+
 if (require.main == module) {
     app.listen(process.env.PORT || 8080, () =>
         console.log("petition server listening 😗✌")
