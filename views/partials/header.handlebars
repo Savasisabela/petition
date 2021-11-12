@@ -1,0 +1,21 @@
+<header>
+    <div class="header-link right">
+        {{#if register}}
+            <p><a href="/login">Login</a> </p>
+        {{/if}}
+        {{#if login}}
+            <p><a href="/register">Sign Up</a> </p>
+        {{/if}}
+        {{#if inside}}
+            <p><a href="/logout">End session</a> </p>
+        
+    </div>
+    <div class="header-link">
+        <p><a href="/petition">Your signature</a></p>
+    </div>
+    <div class="header-link">
+        <p><a href="/signers">Se all signers</a></p>
+    </div>
+    {{/if}}
+
+</header>

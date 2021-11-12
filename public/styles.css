@@ -6,35 +6,66 @@
 body {
     display: grid;
     position: relative;
+    margin: 0;
+    grid-template-rows: min-content 1fr min-content;
+}
+
+header {
+    background-color: black;
+    height: 50px;
 }
 
 footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 2rem;
+    height: 40px;
     background-color: black;
     color: white;
-    padding: 6px;
+    padding: 10px;
 }
 
 input {
-    width: 250px;
+    width: 20rem;
     height: 2rem;
 }
 
-#register-container {
+button {
+    width: 15rem;
+    height: 3rem;
+    margin-top: 20px;
+    background-color: white;
+    border-style: double;
+    font-size: 1rem;
+}
+
+.header-link {
+    margin-left: 30px;
+    float: right;
+    margin-right: 30px;
+}
+
+.header-link a {
+    text-decoration: none;
+    color: white;
+}
+
+.header-link a:hover {
+    text-decoration: underline;
+}
+
+#auth-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-#register-header {
+#auth-title {
     text-align: center;
-    height: 20%;
+    height: 20vh;
     text-transform: uppercase;
 }
 
-#register-form {
+#auth-form {
     grid-column: 3;
 }
 
@@ -46,8 +77,40 @@ input {
     grid-column: 2;
 }
 
-.support {
+.form-title {
     grid-column: 3;
+}
+
+#petition-container {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    grid-template-rows: 1fr 1fr 350px;
+}
+
+#petition-title {
+    width: 500px;
+    font-size: 2.5rem;
+    grid-row: 1 / span 2;
+    justify-self: center;
+}
+
+#sign-img {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+}
+
+#sign-canvas {
+    grid-row: 3;
+    grid-column: 1 / span 2;
+    margin-left: 15%;
+}
+
+.sign-form {
+    width: 1000px;
+}
+
+.sign-submit {
+    float: right;
 }
 
 .error-msg {
@@ -55,5 +118,5 @@ input {
 }
 
 .canvas {
-    border: indianred solid 3px;
+    border-bottom: black 3px dotted;
 }

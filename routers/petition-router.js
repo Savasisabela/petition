@@ -11,8 +11,18 @@ router.use(requireLoggedIn, requireNotSigned);
 // *************************** SIGN THE PETITION *****************************
 
 router.get("/", (req, res) => {
-    console.log("are we here?", req.session);
-    return res.render("petition");
+    const { userId } = req.session;
+    db.getUserById(userId)
+        .then((data) => {
+            let rows = data.rows[0];
+            return res.render("petition", { rows });
+        })
+        .catch((err) => {
+            console.log("error on profile edit:", err);
+            return res.render("petition", {
+                error: "Something went wrong, please try again",
+            });
+        });
 });
 
 router.post("/", (req, res) => {
@@ -21,7 +31,6 @@ router.post("/", (req, res) => {
 
     db.addSignature(req.body.signature, userID)
         .then((data) => {
-            console.log("data in addSignature:", data);
             req.session.sigId = data.rows[0].id;
 
             return res.redirect("/thanks");

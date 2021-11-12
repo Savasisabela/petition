@@ -11,8 +11,9 @@ router.get("/", requireNotLoggedIn, (req, res) => {
 });
 
 router.get("/register", requireNotLoggedIn, (req, res) => {
-    return res.render("register", {
+    return res.render("auth", {
         layout: "main",
+        register: true,
     });
 });
 
@@ -27,7 +28,9 @@ router.post("/register", requireNotLoggedIn, (req, res) => {
                 })
                 .catch((err) => {
                     console.log("err on addUser in register:", err);
-                    return res.render("register", {
+                    return res.render("auth", {
+                        layout: "main",
+                        register: true,
                         error: `Something went wrong, please try again.`,
                     });
                 });
@@ -41,8 +44,9 @@ router.post("/register", requireNotLoggedIn, (req, res) => {
 // **************************** LOGIN ************************************
 
 router.get("/login", requireNotLoggedIn, (req, res) => {
-    return res.render("login", {
+    return res.render("auth", {
         layout: "main",
+        login: true,
     });
 });
 
@@ -64,7 +68,9 @@ router.post("/login", requireNotLoggedIn, (req, res) => {
                         return res.redirect("/petition");
                     }
                 } else {
-                    return res.render("login", {
+                    return res.render("auth", {
+                        layout: "main",
+                        login: true,
                         error: "Email and password don't match, please try again",
                     });
                 }

@@ -1,5 +1,6 @@
 console.log("a mae ta on 💁‍♀️", $);
 
+const erase = $(".erase");
 const canvas = $(".canvas");
 const signature = $("#signature");
 const ctx = canvas[0].getContext("2d");
@@ -15,9 +16,9 @@ const getPosition = (x, y, e) => {
     coord.y = y - rect.top;
 };
 
-const startDrawing = (e) => {
+const startDrawing = (x, y, e) => {
     drawing = true;
-    getPosition(e);
+    getPosition(x, y, e);
 };
 
 const stopDrawing = () => {
@@ -38,12 +39,17 @@ function draw(x, y, e) {
 
 canvas.on("touchstart", (e) => {
     e.preventDefault();
-    startDrawing(e);
+    const touch = e.touches[0];
+    const x = touch.pageX;
+    const y = touch.pageY;
+    startDrawing(x, y, e);
 
     canvas.on("touchmove", (e) => {
         e.preventDefault();
-        var touch = e.touches[0];
-        draw(touch.pageX, touch.pageY, e);
+        const touch = e.touches[0];
+        const x = touch.pageX;
+        const y = touch.pageY;
+        draw(x, y, e);
     });
 });
 
@@ -55,10 +61,15 @@ canvas.on("touchend", (e) => {
 });
 
 canvas.on("mousedown", (e) => {
-    startDrawing(e);
+    console.log("e on mousedown:", e);
+    const x = e.clientX;
+    const y = e.clientY;
+    startDrawing(x, y, e);
 
     canvas.on("mousemove", (e) => {
-        draw(e.clientX, e.clientY, e);
+        const x = e.clientX;
+        const y = e.clientY;
+        draw(x, y, e);
     });
 });
 
@@ -66,4 +77,9 @@ canvas.on("mouseup", () => {
     stopDrawing();
     const dataURL = canvas[0].toDataURL();
     signature.val(dataURL);
+});
+
+erase.on("click", () => {
+    console.log("button was clicked!");
+    window.location = "/petition";
 });

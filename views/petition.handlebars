@@ -1,20 +1,35 @@
-<h1>Sign here to get a cookie!</h1>
-<h3 class="error-msg">{{error}}</h3>
+{{>header inside=true}} 
 
-<form action="" method="post">
-
-    <div>
-        <label for="signature">Sign here</label>
-        <canvas class="canvas" width="1000" height="300">
-            <input type="hidden" name="signature" id="signature" required />
-        </canvas>
-    </div>
-    <div>
-        <button>Submit</button>
+<div id="petition-container">
+    <div id="petition-title">
+        {{#rows}}
+        <p class="petition-text">I, {{first}} {{last}}, believe that Isabela should get the best job of all jobs as a developer. She is the most hard-working, friendly, creative and talented person I have ever met in my entire life.</p>
+        {{/rows}}
     </div>
 
-</form>
+    <div id="sign-img">
+        <img src="/sign.jpg">
+    </div>
 
-<a href="/logout">Logout</a>
+    <div id="sign-canvas">
+        <form class="sign-form" action="" method="post">
+
+            <div>
+                {{!-- <label for="signature">Sign here</label> --}}
+                <canvas class="canvas" width="1000" height="200">
+                    <input type="hidden" name="signature" id="signature" required />
+                </canvas>
+            </div>
+            <div class="sign-submit">
+                <button class="erase" type="button">Start over</button>
+                <button>Submit</button>
+                <h3 class="error-msg">{{error}}</h3>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="petition.js"></script>
