@@ -40,15 +40,15 @@ function draw(x, y, e) {
 canvas.on("touchstart", (e) => {
     e.preventDefault();
     const touch = e.touches[0];
-    const x = touch.pageX;
-    const y = touch.pageY;
+    const x = touch.clientX;
+    const y = touch.clientY;
     startDrawing(x, y, e);
 
     canvas.on("touchmove", (e) => {
         e.preventDefault();
         const touch = e.touches[0];
-        const x = touch.pageX;
-        const y = touch.pageY;
+        const x = touch.clientX;
+        const y = touch.clientY;
         draw(x, y, e);
     });
 });

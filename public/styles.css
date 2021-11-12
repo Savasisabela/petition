@@ -102,7 +102,7 @@ button {
 #sign-canvas {
     grid-row: 3;
     grid-column: 1 / span 2;
-    margin-left: 15%;
+    margin-left: 12%;
 }
 
 .sign-form {
