@@ -25,7 +25,7 @@ const stopDrawing = () => {
     drawing = false;
 };
 
-function draw(x, y, e) {
+const draw = (x, y, e) => {
     if (drawing) {
         ctx.beginPath();
         ctx.lineWidth = 4;
@@ -35,7 +35,7 @@ function draw(x, y, e) {
         ctx.lineTo(coord.x, coord.y);
         ctx.stroke();
     }
-}
+};
 
 canvas.on("touchstart", (e) => {
     e.preventDefault();
@@ -83,3 +83,21 @@ erase.on("click", () => {
     console.log("button was clicked!");
     window.location = "/petition";
 });
+
+// const render = () => {
+//     ctx.canvas.width = document.documentElement.clientWidth * 0.5;
+//     ctx.canvas.height = document.documentElement.clientHeight * 0.5;
+//     console.log("ctx.canvas.height:", ctx.canvas.height);
+//     console.log("ctx.canvas.width:", ctx.canvas.width);
+
+//     ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+// };
+
+// $(window).on("resize", () => {
+//     render();
+// });
+
+// conditiin canvas.width = ;and height to size of window
+
+// listen for resize event on window object to change canvas size
+// window.innerHeight, innerwidth
