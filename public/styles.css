@@ -8,21 +8,14 @@ body {
     margin: 0px;
     height: 100vh;
     width: 100vw;
-}
-
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: black;
-    height: 50px;
-    z-index: 1;
+    overflow-x: hidden;
 }
 
 footer {
     position: fixed;
     bottom: 0;
-    width: 100%;
+    left: 0;
+    width: 100vw;
     height: 40px;
     background-color: black;
     color: white;
@@ -63,10 +56,23 @@ button {
     position: relative;
     overflow-x: hidden;
     top: 0px;
-    width: 100vw;
+    width: 100%;
+    height: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 50px 200px 1fr 40px;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 50px 180px 50px 300px 40px;
+    justify-content: space-evenly;
+    column-gap: 30px;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: black;
+    height: 50px;
+    z-index: 1;
+    grid-column: 1 / span 3;
 }
 
 #auth-title {
@@ -77,27 +83,52 @@ button {
     grid-column: 1 / span 3;
 }
 
-#auth-form {
-    grid-column: 3;
-}
-
 #hire-me-img {
-    grid-row: 3;
+    grid-column: 1;
+    grid-row: 3 / span 2;
     height: 400px;
 }
 
 #hire-me-img img {
-    grid-row: 3;
-    height: 400px;
-    z-index: 1001;
+    height: 500px;
 }
 
 #testimonials {
     grid-column: 2;
+    grid-row: 3 / span 2;
+    font-size: 1.8rem;
+    text-align: center;
+    display: grid;
+    grid-template-rows: 33% 33% 33%;
+}
+
+.steve {
+    grid-row: 1;
+    padding: 5px;
+    height: 100px;
+}
+
+.barbara {
+    grid-row: 2;
+    padding: 5px;
+    height: 100px;
+    justify-self: start;
+}
+
+.david {
+    grid-row: 3;
+    padding: 5px;
+    height: 100px;
 }
 
 #form-title {
     grid-column: 3;
+    grid-row: 3;
+}
+
+#auth-form {
+    grid-column: 3;
+    grid-row: 4;
 }
 
 #petition-container {
@@ -261,4 +292,7 @@ button {
     #testimonials {
         height: 80px;
     }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
 }
