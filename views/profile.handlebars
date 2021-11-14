@@ -1,33 +1,46 @@
-{{>header inside=true}} 
-<h1>I'd love to know a bit more about you!</h1>
+<div id="profile-container">
 
-<h3 class="error-msg">{{error}}</h3>
-<form action="" method="post">
-    <div>
-        <div class="label">
-
-            <label for="age">How old are you?</label>
-        </div>
-        <input type="number" name="age" class="age" />
-    </div>
-    <div>
-        <div class="label">
-
-            <label for="city">Which city do you live in?</label>
-        </div>
-        <input type="text" name="city" class="city" />
+    <div id="profile-header">
+        {{>header inside=true}} 
     </div>
 
-    <div>
-        <div class="label">
-
-            <label for="website">Share your awesome website or a cool link!</label>
-        </div>
-        <input type="text" name="website" class="website" />
+    <div id="profile-title">
+        <h1>I'd love to know a bit more about you!</h1>
     </div>
-    <div>
-        <button>Continue</button>
-    </div>
-</form>
 
-<a href="/logout">Logout</a>
+    <div id="profile-form">
+        <form action="" method="post">
+            <div>
+                <div class="label">
+
+                    <label for="age">How old are you?</label>
+                </div>
+                <input type="number" name="age" class="age" />
+            </div>
+            <div>
+                <div class="label">
+
+                    <label for="city">Which city do you live in?</label>
+                </div>
+                <input type="text" name="city" class="city" />
+            </div>
+
+            <div>
+                <div class="label">
+
+                    <label for="website">Share your awesome website or a cool link!</label>
+                </div>
+                <input type="text" name="website" class="website" />
+            </div>
+            <div>
+                <button>Continue</button>
+                <h3 class="error-msg">{{error}}</h3>
+            </div>
+        </form>
+    </div>
+
+    <div id="footer">
+        <footer>© Savas 2021</footer>
+    </div>
+
+</div>

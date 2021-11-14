@@ -84,18 +84,30 @@ erase.on("click", () => {
     window.location = "/petition";
 });
 
-// const render = () => {
-//     ctx.canvas.width = document.documentElement.clientWidth * 0.5;
-//     ctx.canvas.height = document.documentElement.clientHeight * 0.5;
-//     console.log("ctx.canvas.height:", ctx.canvas.height);
-//     console.log("ctx.canvas.width:", ctx.canvas.width);
-
-//     ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-// };
-
-// $(window).on("resize", () => {
-//     render();
+// window.on("load", () => {
+//     console.log(window.width());
+//     if (window.width() >= 320 && window.width() <= 480) {
+//         canvas.width = 200;
+//         canvas.height = 60;
+//     }
 // });
+
+const render = () => {
+    ctx.canvas.width = document.documentElement.clientWidth * 0.7;
+    ctx.canvas.height = document.documentElement.clientHeight * 0.3;
+    console.log("canvas.height:", ctx.canvas.height);
+    console.log("canvas.width:", ctx.canvas.width);
+
+    // ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+};
+
+$(window).on("resize", () => {
+    render();
+});
+
+$(window).on("load", () => {
+    render();
+});
 
 // conditiin canvas.width = ;and height to size of window
 

@@ -1,6 +1,8 @@
-{{>header inside=true}} 
+
+
 
 <div id="petition-container">
+    {{>header inside=true}} 
     <div id="petition-title">
         {{#rows}}
         <p class="petition-text">I, {{first}} {{last}}, believe that Isabela should get the best job of all jobs as a developer. She is the most hard-working, friendly, creative and talented person I have ever met in my entire life.</p>
@@ -15,8 +17,7 @@
         <form class="sign-form" action="" method="post">
 
             <div>
-                {{!-- <label for="signature">Sign here</label> --}}
-                <canvas class="canvas" width="1000" height="200">
+                <canvas class="canvas" >
                     <input type="hidden" name="signature" id="signature" required />
                 </canvas>
             </div>
@@ -25,9 +26,13 @@
                 <button>Submit</button>
                 <h3 class="error-msg">{{error}}</h3>
             </div>
-
         </form>
     </div>
+
+    <div id="footer">
+        <footer>© Savas 2021</footer>
+    </div>
+
 </div>
 
 
