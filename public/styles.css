@@ -37,7 +37,7 @@ input {
 }
 
 button {
-    width: 15rem;
+    width: 18rem;
     height: 3rem;
     margin-top: 20px;
     background-color: white;
@@ -308,12 +308,43 @@ header {
     margin: 0;
 }
 
+/* ============================SIGNERS============================== */
+
+#signers-container,
+#city-container {
+    display: grid;
+    grid-template-rows: 80px 0.5fr 1.5fr 80px;
+}
+
+#signers-title,
+#city-title,
+#city-nothing {
+    max-width: 70%;
+    text-align: center;
+    justify-self: center;
+    grid-row: 2;
+}
+
+#signers-list,
+#city-list {
+    max-width: 70%;
+    font-size: 1.5rem;
+    justify-self: center;
+    grid-row: 3;
+}
+
 /* ============================MEDIA QUERIES============================== */
 /* ============================MOBILE============================== */
 
 @media screen and (min-width: 320px) and (max-width: 480px) {
     header {
         padding-right: 10px;
+        grid-area: header;
+        font-size: 0.9rem;
+    }
+
+    footer {
+        font-size: 0.9rem;
     }
 
     .header-link {
@@ -333,10 +364,6 @@ header {
             "image form"
             "testimonials testimonials"
             "footer footer";
-    }
-
-    header {
-        grid-area: header;
     }
 
     #auth-title {
@@ -404,6 +431,7 @@ header {
 
     #auth-form {
         justify-self: start;
+        align-self: center;
         grid-area: form;
     }
 
@@ -447,7 +475,7 @@ header {
 
     #thanks-container {
         grid-template-columns: 50% 50%;
-        grid-template-rows: 25px 130px 45px 90px 130px 65px 40px;
+        grid-template-rows: 25px 130px 45px 90px 95px 80px 80px;
     }
 
     #thanks-title {
@@ -493,6 +521,7 @@ header {
     #thanks-count {
         grid-column: 1 / span 2;
         grid-row: 6;
+        width: fit-content;
     }
 
     #thanks-edit {
@@ -528,6 +557,10 @@ header {
             font-size: 0.8rem;
         }
 
+        input {
+            width: 8rem;
+        }
+
         button {
             width: 8rem;
             height: 2rem;
@@ -540,6 +573,22 @@ header {
         }
 
         #petition-title {
+            font-size: 1.2rem;
+        }
+
+        #thanks-container {
+            grid-template-rows: 15px 100px 40px 60px 65px 65px 80px;
+        }
+
+        #thanks-title {
+            font-size: 2.7rem;
+        }
+
+        #thanks-look {
+            font-size: 1rem;
+        }
+
+        #thanks-text {
             font-size: 1.2rem;
         }
     }

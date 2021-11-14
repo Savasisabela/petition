@@ -1,15 +1,26 @@
-{{>header inside=true}} 
-<h1>Here's a list of everyone who signed this already:</h1>
-<ul>
-    {{#each rows}}
-        <li> {{#if website}} <a href="{{website}}"> {{/if}} 
-            {{first}}
-            {{last}}
-            {{#if website}} </a> {{/if}}
-            {{#if age}}, {{age}} {{/if}}
-            {{#if city}} - <a href="/signers/{{city}}">{{city}}</a> {{/if}}
-        </li>
-    {{/each}}
-</ul>
+<div id="signers-container">
 
-<a href="/logout">Logout</a>
+    {{>header inside=true}} 
+
+    <div id="signers-title">
+        <h1>Here's everyone who believes in me:</h1>
+    </div>
+
+    <div id="signers-list">
+        <ul>
+            {{#each rows}}
+                <li> {{#if website}} <a href="{{website}}"> {{/if}} 
+                    {{first}}
+                    {{last}}
+                    {{#if website}} </a> {{/if}}
+                    {{#if age}}, {{age}} {{/if}}
+                    {{#if city}} - <a href="/signers/{{city}}">{{city}}</a> {{/if}}
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+
+    <div id="footer">
+        <footer>© Savas 2021</footer>
+    </div>
+</div>

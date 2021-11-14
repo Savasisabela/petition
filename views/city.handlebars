@@ -1,17 +1,33 @@
-{{>header inside=true}} 
-{{#if rows}}
-<h1>Here's a list of everyone who signed this already in {{city}}:</h1>
-<ul>
-    {{#each rows}}
-        <li> {{#if website}} <a href="{{website}}"> {{/if}} 
-            {{first}}
-            {{last}}
-            {{#if website}} </a> {{/if}}
-            {{#if age}}, {{age}} {{/if}}
-            {{#if city}} - {{city}} {{/if}}
-        </li>
-    {{/each}}
-</ul>
-{{else}} 
-<h1>There are no signatures from {{city}} yet 😞</h1>
-{{/if}}
+<div id="city-container">
+
+    {{>header inside=true}} 
+
+    {{#if rows}}
+    <div id="city-title">
+        <h1>These are the people who believe me in {{city}}:</h1>
+    </div>
+
+    <div id="city-list">
+        <ul>
+            {{#each rows}}
+                <li> {{#if website}} <a href="{{website}}"> {{/if}} 
+                    {{first}}
+                    {{last}}
+                    {{#if website}} </a> {{/if}}
+                    {{#if age}}, {{age}} {{/if}}
+                    {{#if city}} - {{city}} {{/if}}
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+
+    {{else}} 
+    <div id="city-nothing">
+        <h1>There are no signatures from {{city}} yet 😞</h1>
+    </div>
+    {{/if}}
+
+    <div id="footer">
+        <footer>© Savas 2021</footer>
+    </div>
+</div>
