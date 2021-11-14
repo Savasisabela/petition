@@ -1,16 +1,50 @@
+<div id="thanks-container">
 
-{{>header inside=true}} 
-<h1>THANK YOU</h1>
+    {{>header inside=true}} 
 
-<p>You just helped me get one step closer to my dream job as a developer</p>
-<br />
-<p>Look at your artwork of a signature!</p>
+    <div id="thanks-title">
+        <p>THANK YOU!</p>
+    </div>
 
-<img src="{{signature}}" alt="" />
+    <div id="thanks-text">
+        <p>You just helped me get one step closer to my dream job as a developer</p>
+    </div>
 
-<h3> <a href="/signers">{{count}} signatures and counting...</a></h3>
-<h3> <a href="/profile/edit">Edit your profile</a></h3>
-<form method="post" action="/signature/delete">
-    <button>Delete your signature</button>
-    <h3 class="error-msg">{{error}}</h3>
-</form>
+    <div id="thanks-count">
+        <p> <a href="/signers">{{count}} signatures and counting...</a></p>
+    </div>
+
+    <div id="thanks-look">
+        <p>Look at your artwork of a signature:</p>
+    </div>
+
+    <div id="thanks-sign">
+        <img src="{{signature}}" alt="" />  
+    </div>
+
+    <div id="thanks-img">
+        <img src="/sparks.jpg">
+    </div>
+
+    <div id="thanks-edit">
+        <button class="edit-profile-btn" type="button">Edit your profile</button>
+    </div>
+
+    <div id="thanks-delete">
+        <form method="post" action="/signature/delete">
+            <button>Delete your signature</button>
+        </form>
+    </div>
+
+    <div class="thanks-error">
+        <p class="error-msg">{{error}}</p>
+    </div>
+    
+
+    <div id="footer">
+        <footer>© Savas 2021</footer>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="thanks.js"></script>

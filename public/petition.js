@@ -80,7 +80,6 @@ canvas.on("mouseup", () => {
 });
 
 erase.on("click", () => {
-    console.log("button was clicked!");
     window.location = "/petition";
 });
 
