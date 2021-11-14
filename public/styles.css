@@ -521,7 +521,6 @@ header {
     #thanks-count {
         grid-column: 1 / span 2;
         grid-row: 6;
-        width: fit-content;
     }
 
     #thanks-edit {
