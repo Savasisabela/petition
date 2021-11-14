@@ -1,65 +1,101 @@
-{{>header inside=true}} 
+<div id="edit-container">
 
-<h1>EDIT YOUR PROFILE HERE</h1>
+    <div id="edit-header">
+        {{>header inside=true}}
+    </div>
 
-<h3 class="error-msg">{{error}}</h3>
+    <div id="edit-title">
+        <h1>Make changes to your profile</h1>
+    </div>
 
-<form action="" method="post">
-    {{#rows}}
-        <div>
-            <label for="first">First name</label>
-            <input
-                type="text"
-                name="first"
-                class="first"
-                value="{{first}}"
-                required
-            />
-        </div>
-        <div>
-            <label for="last">Last name</label>
-            <input
-                type="text"
-                name="last"
-                class="last"
-                value="{{last}}"
-                required
-            />
-        </div>
-        <div>
-            <label for="email">Email</label>
-            <input
-                type="email"
-                name="email"
-                class="email"
-                value="{{email}}"
-                required
-            />
-        </div>
-        <div>
-            <label for="password">Password</label>
-            <input type="password" name="password" class="password" />
-        </div>
-        <div>
-            <label for="age">Age</label>
-            <input type="number" name="age" class="age" value="{{age}}" />
-        </div>
-        <div>
-            <label for="city">City</label>
-            <input type="text" name="city" class="city" value="{{city}}" />
-        </div>
+    <div id="edit-subtext">
+        <p>if you want to</p>
+    </div>
 
-        <div>
-            <label for="website">Website</label>
-            <input
-                type="text"
-                name="website"
-                class="website"
-                value="{{website}}"
-            />
+    <div id="edit-form">
+        <form action="" method="post">
+            {{#rows}}
+                <div>
+                    <div class="label">
+                        <label for="first">First name</label>
+                    </div>
+                    <input
+                        type="text"
+                        name="first"
+                        class="first"
+                        value="{{first}}"
+                        required
+                    />
+                </div>
+
+                <div>
+                    <div class="label">
+                        <label for="last">Last name</label>
+                    </div>
+                    <input
+                        type="text"
+                        name="last"
+                        class="last"
+                        value="{{last}}"
+                        required
+                    />
+                </div>
+
+                <div>
+                    <div class="label">
+                        <label for="email">Email</label>
+                    </div>
+                    <input
+                        type="email"
+                        name="email"
+                        class="email"
+                        value="{{email}}"
+                        required
+                    />
+                </div>
+
+                <div>
+                    <div class="label">
+                        <label for="password">Password</label>
+                    </div>
+                    <input type="password" name="password" class="password" />
+                </div>
+
+                <div>
+                    <div class="label">
+                        <label for="age">Age</label>
+                    </div>
+                    <input type="number" name="age" class="age" min="0" max="110" value="{{age}}" />
+                </div>
+
+                <div>
+                    <div class="label">
+                        <label for="city">City</label>
+                    </div>
+                    <input type="text" name="city" class="city" value="{{city}}" />
+                </div>
+
+                <div>
+                    <div class="label">
+                        <label for="website">Website</label>
+                    </div>
+                    <input
+                        type="text"
+                        name="website"
+                        class="website"
+                        value="{{website}}"
+                    />
+                </div>
+                <div>
+                    <button>Update</button>
+                </div>
+                <p class="error-msg">{{error}}</p>
+            {{/rows}}
+        </form>
+    </div>
+
+
+        <div id="footer">
+            <footer>© Savas 2021</footer>
         </div>
-        <div>
-            <button>Update</button>
-        </div>
-    {{/rows}}
-</form>
+</div>
