@@ -313,7 +313,7 @@ header {
 #signers-container,
 #city-container {
     display: grid;
-    grid-template-rows: 80px 0.5fr 1.5fr 80px;
+    grid-template-rows: 80px 100px 1fr 80px;
 }
 
 #signers-title,
@@ -544,6 +544,14 @@ header {
 
     #thanks-delete button {
         height: 5rem;
+    }
+
+    #signers-container {
+        grid-template-rows: 80px 150px 1fr 80px;
+    }
+
+    #city-container {
+        grid-template-rows: 80px 190px 1fr 80px;
     }
 
     @media screen and (min-height: 550px) and (max-height: 670px) {

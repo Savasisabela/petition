@@ -16,7 +16,7 @@ router.post("/", (req, res) => {
     let { age, city, website } = req.body;
     const { userId } = req.session;
 
-    if (website && !website.startsWith("http://")) {
+    if (website && !website.startsWith("http")) {
         website = "http://" + website;
     }
 
@@ -59,7 +59,7 @@ router.post("/edit", (req, res) => {
     let { password, first, last, email, age, city, website } = req.body;
     const { userId } = req.session;
 
-    if (website && !website.startsWith("http://")) {
+    if (website && !website.startsWith("http")) {
         website = "http://" + website;
     }
 
